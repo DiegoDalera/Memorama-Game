@@ -1,7 +1,7 @@
 let iconos = []
 let selecciones = []
 
-const tablero = document.getElementById("tablero")
+const tablero = document.getElementById("tablero");
 
 document.addEventListener("DOMContentLoaded", (e) => {
     generarTablero()
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 function generarTablero() {
     let longitud = escudos.length;
     let tarjetas = []
-//onclick="seleccionarTarjeta(${i})
+
     for (let i = 0; i < longitud * 2; i++) {
         tarjetas.push(`
         <div class="area-tarjeta" ">
@@ -51,33 +51,33 @@ function generarTablero() {
 
 
 function seleccionarTarjeta(i) {
-    let tarjetaSeleccionada = document.getElementById("tarjeta" + i)
-    if (tarjetaSeleccionada.style.transform != "rotateY(180deg)") {
-        tarjetaSeleccionada.style.transform = "rotateY(180deg)"
-        selecciones.push(i)
+    // let tarjetaSeleccionada = document.getElementById("tarjeta" + i)
+    // if (tarjetaSeleccionada.style.transform != "rotateY(180deg)") {
+    //     tarjetaSeleccionada.style.transform = "rotateY(180deg)"
+    //     selecciones.push(i)
 
-    }
-    if (selecciones.length == 2) {
-        deseleccionar(selecciones)
-        selecciones = []
-    }
+    // }
+    // if (selecciones.length == 2) {
+    //     deseleccionar(selecciones)
+    //     selecciones = []
+    // }
 }
 
 function deseleccionar(selecciones) {
-    setTimeout(() => {
-        let trasera1 = document.getElementById("trasera" + selecciones[0])
-        let trasera2 = document.getElementById("trasera" + selecciones[1])
-        console.log(trasera1);
-        console.log(trasera2);
-        if (trasera1.innerHTML != trasera2.innerHTML) {
-            let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
-            let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
-            tarjeta1.style.transform = "rotateY(0deg)"
-            tarjeta2.style.transform = "rotateY(0deg)"
-        } else {
-            alert("acerto")
-            trasera1.style.background = "red"
-            trasera2.style.background = "red"
-        }
-    }, 1000);
+    // setTimeout(() => {
+    //     let trasera1 = document.getElementById("trasera" + selecciones[0])
+    //     let trasera2 = document.getElementById("trasera" + selecciones[1])
+    //     console.log(trasera1);
+    //     console.log(trasera2);
+    //     if (trasera1.innerHTML != trasera2.innerHTML) {
+    //         let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
+    //         let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
+    //         tarjeta1.style.transform = "rotateY(0deg)"
+    //         tarjeta2.style.transform = "rotateY(0deg)"
+    //     } else {
+    //         alert("acerto")
+    //         trasera1.style.background = "red"
+    //         trasera2.style.background = "red"
+    //     }
+    // }, 1000);
 }

@@ -38,46 +38,59 @@ function generarTablero() {
     tarjetas.sort(() => Math.random() - 0.5)
     tablero.innerHTML = tarjetas.join(" ");
 
+
     const tarjetasSeleccionadas = document.querySelectorAll('.tarjeta');
     tarjetasSeleccionadas.forEach((tar) => {
-        tar.addEventListener("click", (e) => {
-            e.preventDefault();
-            console.log(e.target.id);
-            //seleccionarTarjeta(e.target.id);
+        tar.addEventListener("click", () => {
+            console.log(tar.id);
+            seleccionarTarjeta(tar.id);
         });
     })
 }
 
 
 
-function seleccionarTarjeta(i) {
-    // let tarjetaSeleccionada = document.getElementById("tarjeta" + i)
-    // if (tarjetaSeleccionada.style.transform != "rotateY(180deg)") {
-    //     tarjetaSeleccionada.style.transform = "rotateY(180deg)"
-    //     selecciones.push(i)
+function seleccionarTarjeta(id) {
 
-    // }
-    // if (selecciones.length == 2) {
-    //     deseleccionar(selecciones)
-    //     selecciones = []
-    // }
+    let tarjetaSeleccionada = document.getElementById(id);
+    console.log(tarjetaSeleccionada)
+    if (tarjetaSeleccionada.style.transform != "rotateY(180deg)") {
+        tarjetaSeleccionada.style.transform = "rotateY(180deg)"
+        selecciones.push(id)
+
+    }
+    if (selecciones.length == 2) {
+        deseleccionar(selecciones)
+        selecciones = []
+    }
 }
 
 function deseleccionar(selecciones) {
-    // setTimeout(() => {
-    //     let trasera1 = document.getElementById("trasera" + selecciones[0])
-    //     let trasera2 = document.getElementById("trasera" + selecciones[1])
-    //     console.log(trasera1);
-    //     console.log(trasera2);
-    //     if (trasera1.innerHTML != trasera2.innerHTML) {
-    //         let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
-    //         let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
-    //         tarjeta1.style.transform = "rotateY(0deg)"
-    //         tarjeta2.style.transform = "rotateY(0deg)"
-    //     } else {
-    //         alert("acerto")
-    //         trasera1.style.background = "red"
-    //         trasera2.style.background = "red"
-    //     }
-    // }, 1000);
+    setTimeout(() => {
+        let trasera1 = document.getElementById(selecciones[0])
+        let trasera2 = document.getElementById(selecciones[1])
+
+        console.log(trasera1.innerHTML);
+        console.log(trasera2.innerHTML);
+
+        const imgElement = trasera1.querySelector('img');
+        const rutaImagen = imgElement.getAttribute('src');
+        console.log(rutaImagen);
+
+        const imgElement2 = trasera2.querySelector('img');
+        const rutaImagen2 = imgElement2.getAttribute('src');
+        console.log(rutaImagen2);
+
+
+        if (rutaImagen != rutaImagen2) {
+            let tarjeta1 = document.getElementById(selecciones[0])
+            let tarjeta2 = document.getElementById(selecciones[1])
+            tarjeta1.style.transform = "rotateY(0deg)"
+            tarjeta2.style.transform = "rotateY(0deg)"
+        } else {
+            alert("acerto");
+            trasera1.style.backgroundColor  = "red"
+            trasera2.style.backgroundColor  = "red"
+        }
+    }, 1000);
 }

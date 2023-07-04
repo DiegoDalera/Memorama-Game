@@ -1,10 +1,13 @@
-let iconos = []
-let selecciones = []
+let iconos = [];
+let selecciones = [];
+let contador = 0;
 
 const tablero = document.getElementById("tablero");
+const intentos = document.getElementById("intentos");
 
 document.addEventListener("DOMContentLoaded", (e) => {
-    generarTablero()
+    generarTablero();
+    intentos.innerHTML= `${contador} Intentos` ;
 })
 
 
@@ -89,8 +92,12 @@ function deseleccionar(selecciones) {
             tarjeta2.style.transform = "rotateY(0deg)"
         } else {
             alert("acerto");
+
             trasera1.style.backgroundColor  = "red"
             trasera2.style.backgroundColor  = "red"
         }
     }, 1000);
+
+    contador++;
+    intentos.innerHTML= `${contador} Intentos` ;
 }
